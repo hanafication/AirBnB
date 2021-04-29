@@ -15,7 +15,7 @@ def scraper():
 
     # Menuju URL
     url = 'https://www.airbnb.com/'
-    driver = driver.get(url)
+    driver.get(url)
     return driver
 
 

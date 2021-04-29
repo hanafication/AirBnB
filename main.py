@@ -1,6 +1,16 @@
 from scraper.scraper import scraper
+from search.search import search_and_go
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium import webdriver
 
-scraper()
+loc = 'malang'
+driver = scraper()
+search = driver.find_element_by_class_name('_1xq16jy').click()
+
+
 # Press the green button in the gutter to run the script.
 #if __name__ == '__main__':
 #    scraper()
