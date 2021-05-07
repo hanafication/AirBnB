@@ -6,9 +6,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 
-loc = 'malang'
+loc = 'banyuwangi'
 driver = scraper()
-search = driver.find_element_by_class_name('_1xq16jy').click()
+#search = driver.find_element_by_class_name('_1xq16jy').click()
+search = search_and_go(loc = loc, driver = driver)
+#search = search_and_go(driver = driver)
 
 
 # Press the green button in the gutter to run the script.
