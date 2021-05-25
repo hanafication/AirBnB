@@ -1,8 +1,9 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-
+import time
 def search_and_go(loc, driver):
     ''''
     Melakukan pencarian kota berdasarkan input
@@ -16,11 +17,28 @@ def search_and_go(loc, driver):
 
     #driver.find_element_by_class_name('_1xq16jy').click()
     search.click()
+    time.sleep(5)
     search.send_keys(loc)
-    search.send_keys(Keys.RETURN)
+    time.sleep(5)
+    search.send_keys(Keys.TAB + Keys.TAB + Keys.TAB + Keys.TAB + Keys.TAB + Keys.ENTER)
+    # Send keys without element
+    #actions = ActionChains(driver)
+    #search.send_keys(Keys.RETURN)
+    #actions.send_keys(Keys.TAB)
+    #time.sleep(5)
+    #actions.send_keys(Keys.TAB)
+    #time.sleep(5)
+    #actions.send_keys(Keys.TAB)
+    #time.sleep(5)
+    #actions.send_keys(Keys.TAB)
+    #time.sleep(5)
+    #actions.send_keys(Keys.TAB)
+    #time.sleep(5)
+    #actions.send_keys(Keys.RETURN)
 
-    go = WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.CLASS_NAME, '_1mzhry13'))).click()
-    return go
+    #go = WebDriverWait(driver, 30).until(expected_conditions.element_to_be_clickable((By.CLASS_NAME, '_1mzhry13'))).click()
+    curr_url = driver.current_url
+    return curr_url
 
 
     # find

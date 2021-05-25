@@ -1,15 +1,31 @@
 from scraper.scraper import scraper
 from search.search import search_and_go
+from bs4 import BeautifulSoup
+import requests
+from listings.listings import pageScrape
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 
-loc = 'banyuwangi'
+loc = 'bondowoso'
 driver = scraper()
 #search = driver.find_element_by_class_name('_1xq16jy').click()
-search = search_and_go(loc = loc, driver = driver)
+curr_url = search_and_go(loc = loc, driver = driver)
+print(curr_url)
+# Scrape single listing
+soup = BeautifulSoup(driver.page_source, 'html.parser')
+print(soup.prettify())
+# Getting single listings element
+# listing = soup.find_all('div', '_gig1e7')
+
+
+
+#listings = pageScrape(driver=driver, curr_url= curr_url)
+#listings.scrape_single_element()
+#driver.close()
+
 #search = search_and_go(driver = driver)
 
 
