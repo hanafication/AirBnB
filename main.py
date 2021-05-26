@@ -9,21 +9,19 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 
-loc = 'bondowoso'
+loc = 'malang'
 driver = scraper()
 #search = driver.find_element_by_class_name('_1xq16jy').click()
 curr_url = search_and_go(loc = loc, driver = driver)
-print(curr_url)
 # Scrape single listing
-soup = BeautifulSoup(driver.page_source, 'html.parser')
-print(soup.prettify())
+#soup = BeautifulSoup(driver.page_source, 'html.parser')
+#print(soup.prettify())
 # Getting single listings element
 # listing = soup.find_all('div', '_gig1e7')
 
-
-
-#listings = pageScrape(driver=driver, curr_url= curr_url)
-#listings.scrape_single_element()
+soup = pageScrape(driver=driver, curr_url=curr_url)
+listings = soup.using_requests()
+print(listings[0])
 #driver.close()
 
 #search = search_and_go(driver = driver)
