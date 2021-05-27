@@ -1,5 +1,5 @@
 from scraper.scraper import scraper
-from search.search import search_and_go
+from search.search import search_and_go, iterating_pages
 from bs4 import BeautifulSoup
 import requests
 from listings.listings import pageScrape
@@ -9,7 +9,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 
-loc = 'malang'
+loc = 'jember'
 driver = scraper()
 #search = driver.find_element_by_class_name('_1xq16jy').click()
 curr_url = search_and_go(loc = loc, driver = driver)
@@ -19,9 +19,10 @@ curr_url = search_and_go(loc = loc, driver = driver)
 # Getting single listings element
 # listing = soup.find_all('div', '_gig1e7')
 
-soup = pageScrape(driver=driver, curr_url=curr_url)
-listings = soup.using_requests()
-print(listings[0])
+test_pages = iterating_pages(driver = driver)
+print(len(test_pages))
+print(test_pages)
+
 #driver.close()
 
 #search = search_and_go(driver = driver)
