@@ -42,7 +42,7 @@ class pageScrape:
         print(len(listings))
         return listings
 
-    def extract_single_listings(self, listings):
+    def extract_single_listings(self, listings,loc):
         '''
         Extract all listings in single page
         '''
@@ -51,6 +51,7 @@ class pageScrape:
 
         for listing in listings:
             listings_dict = dict()
+            listings_dict['city'] = loc
             # Iterating for each information
             for info in pageScrape.LISTING_INFORMATION:
                 try:
@@ -73,9 +74,9 @@ class pageScrape:
                         output = elements.get_text()
 
                     listings_dict[info] = output
-
                 except:
                     listings_dict[info] = 'empty'
+
 
             listings_list.append(listings_dict)
 

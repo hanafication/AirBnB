@@ -49,7 +49,7 @@ def search_and_go(loc, driver):
     #go = driver.find_element_by_class_name('_m9v25n')
     #return go.click()
 
-def iterating_pages(driver):
+def iterating_pages(driver, loc):
     ''''
     Scrape all listings in all page
     '''
@@ -62,7 +62,7 @@ def iterating_pages(driver):
             current_page = driver.current_url
             soup = pageScrape(driver=driver, curr_url=current_page)
             page = soup.using_requests()
-            page_list = soup.extract_single_listings(listings = page)
+            page_list = soup.extract_single_listings(listings = page, loc=loc)
             scraped_data.append(page_list)
 
             # Move to next page
@@ -70,6 +70,7 @@ def iterating_pages(driver):
             next_page = WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable((By.CLASS_NAME, '_za9j7e')))
             next_page.click()
         except:
+
             print('No more page left. Scraping is done')
             driver.close()
             break
