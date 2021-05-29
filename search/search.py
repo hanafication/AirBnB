@@ -66,8 +66,8 @@ def iterating_pages(driver, loc):
             scraped_data.append(page_list)
 
             # Move to next page
-            time.sleep(3)
-            next_page = WebDriverWait(driver, 10).until(expected_conditions.element_to_be_clickable((By.CLASS_NAME, '_za9j7e')))
+            time.sleep(2)
+            next_page = WebDriverWait(driver, 5).until(expected_conditions.element_to_be_clickable((By.CLASS_NAME, '_za9j7e')))
             next_page.click()
         except:
 

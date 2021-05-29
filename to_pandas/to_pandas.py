@@ -20,10 +20,10 @@ def to_csv(loc, dataframe):
     '''
     Export to csv based on time exporting
     '''
-    #path_windows = 'C:\Users\Rahadian\PycharmProjects\AirBnB\exported_dataset'
-    path_ubuntu = '/home/expiatio/PycharmProjects/AirBnB/exported_dataset'
+    path = 'C:/Users/Rahadian/PycharmProjects/AirBnB/exported_dataset'
+    #path_ubuntu = '/home/expiatio/PycharmProjects/AirBnB/exported_dataset'
     ts = time.time()
-    timenow = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+    timenow = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d%H%M%S_%f')
 
-    return dataframe.to_csv(os.path.join(path_ubuntu, timenow+'-'+loc+'.csv'),
+    return dataframe.to_csv(os.path.join(path, timenow+'-'+loc+'.csv'),
                             index=False, sep=';')
